@@ -1,15 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('Clean Up') {
+    stage('Clean Ups') {
       parallel {
-        stage('Clean Up') {
+        stage('Clean Up 1') {
           steps {
             echo 'Blue Ocean Hello World! HamiDev!!!'
           }
         }
 
-        stage('My Parallel Stage') {
+        stage('Clean Up 2') {
           steps {
             echo 'This is a parallel stage with Clean Up stage.'
           }

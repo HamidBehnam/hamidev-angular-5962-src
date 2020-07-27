@@ -1,7 +1,7 @@
 pipeline {
   agent {
-    docker {
-      image 'maven'
+    node {
+      label 'node_agent'
     }
 
   }
@@ -10,7 +10,7 @@ pipeline {
       steps {
         sh '''echo "this is for test"
 echo ${PATH}
-echo ${M2_HOME}'''
+node --version'''
       }
     }
 

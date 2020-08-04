@@ -4,8 +4,7 @@ pipeline {
     stage('Report') {
       steps {
         sh '''echo "this is for test"
-echo ${PATH}
-node --version'''
+echo ${PATH}'''
       }
     }
 

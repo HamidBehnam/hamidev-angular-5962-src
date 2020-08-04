@@ -1,10 +1,15 @@
 pipeline {
-  agent any
+  agent {
+          docker {
+              image 'node'
+          }
+      }
   stages {
-    stage('Report') {
+    stage('Start') {
       steps {
         sh '''echo "this is for test"
-echo ${PATH}'''
+echo ${PATH}
+echo node --version'''
       }
     }
 

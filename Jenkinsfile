@@ -1,9 +1,10 @@
 pipeline {
   agent {
-          docker {
-              image 'node'
-          }
-      }
+    docker {
+      image 'node'
+    }
+
+  }
   stages {
     stage('Start') {
       steps {

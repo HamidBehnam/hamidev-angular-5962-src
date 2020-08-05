@@ -24,7 +24,7 @@ echo "The Build Stage!"'''
 
         stage('Install npm dependencies') {
           steps {
-            sh 'npm install'
+            sh '#npm install'
           }
         }
 
@@ -39,8 +39,8 @@ echo "The Build Stage!"'''
 
     stage('Pre Deploy') {
       steps {
-        sh '''sudo rm -r /var/www/demo.hamidev.com/public_html/angular/102
-sudo mkdir /var/www/demo.hamidev.com/public_html/angular/102'''
+        sh 'sudo rm -r /var/www/demo.hamidev.com/public_html/angular/102'
+        sh 'sudo mkdir /var/www/demo.hamidev.com/public_html/angular/102'
       }
     }
 

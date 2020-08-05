@@ -33,7 +33,7 @@ rm -rf dist'''
 
     stage('Compile') {
       steps {
-        sh 'npm run build'
+        sh 'npm run build -- --base-href angular/102/'
       }
     }
 

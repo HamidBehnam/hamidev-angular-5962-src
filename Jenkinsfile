@@ -10,7 +10,8 @@ pipeline {
       parallel {
         stage('Build') {
           steps {
-            sh '''node --version
+            sh '''sudo chown -R 112:117 "/.npm"
+node --version
 echo "The Build Stage!"'''
           }
         }

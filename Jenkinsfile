@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('Start') {
       steps {
-        sh 'echo "this is a test!"'
+        sh '''echo "this is a test!"
+echo node --version'''
       }
     }
 

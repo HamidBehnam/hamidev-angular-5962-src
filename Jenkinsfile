@@ -24,7 +24,7 @@ echo "The Build Stage!"'''
 
         stage('Install npm dependencies') {
           steps {
-            sh '#npm install'
+            sh 'npm install'
           }
         }
 

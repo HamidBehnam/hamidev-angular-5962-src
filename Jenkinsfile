@@ -3,9 +3,7 @@ pipeline {
     docker {
       image 'node'
     }
-  }
-  environment {
-    HOME = '.'
+
   }
   stages {
     stage('Build') {
@@ -33,5 +31,14 @@ rm -rf dist'''
       }
     }
 
+    stage('Compile') {
+      steps {
+        sh 'npm run build'
+      }
+    }
+
+  }
+  environment {
+    HOME = '.'
   }
 }

@@ -6,10 +6,28 @@ pipeline {
 
   }
   stages {
-    stage('Start') {
-      steps {
-        sh '''echo "this is a test!"
-node --version'''
+    stage('Build') {
+      parallel {
+        stage('Build') {
+          steps {
+            sh '''node --version
+echo "The Build Stage!"'''
+          }
+        }
+
+        stage('Clearing') {
+          steps {
+            sh '''rm -rf node_modules
+rm -rf dist'''
+          }
+        }
+
+        stage('Install npm dependencies') {
+          steps {
+            sh 'npm install'
+          }
+        }
+
       }
     }
 

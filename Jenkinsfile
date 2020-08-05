@@ -3,15 +3,16 @@ pipeline {
     docker {
       image 'node'
     }
-
+  }
+  environment {
+    HOME = '.'
   }
   stages {
     stage('Build') {
       parallel {
         stage('Build') {
           steps {
-            sh '''chown -R 112:117 "/.npm"
-node --version
+            sh '''node --version
 echo "The Build Stage!"'''
           }
         }

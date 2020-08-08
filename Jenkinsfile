@@ -12,7 +12,7 @@ pipeline {
           steps {
             sh '''echo Printing some info messages.
 node --version
-echo Here\'s the content of the current directory
+echo "Here\'s the content of the current directory"
 ls'''
           }
         }

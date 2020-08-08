@@ -41,8 +41,11 @@ rm -rf dist'''
       steps {
         sh '''ls
 cd dist
+cd hamidev-mobile-dev-env
 ls
-git --version'''
+git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+git status
+'''
       }
     }
 

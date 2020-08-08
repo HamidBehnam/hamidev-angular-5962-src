@@ -10,9 +10,7 @@ pipeline {
       parallel {
         stage('Print Info') {
           steps {
-            sh '''echo Printing some info messages.
-node --version
-echo "Here\'s the content of the current directory"
+            sh '''node --version
 ls'''
           }
         }
@@ -20,8 +18,7 @@ ls'''
         stage('Clearing') {
           steps {
             sh '''rm -rf node_modules
-rm -rf dist
-ls'''
+rm -rf dist'''
           }
         }
 
@@ -34,9 +31,25 @@ ls'''
       }
     }
 
-    stage('Compile') {
+    stage('Build') {
       steps {
         sh 'npm run build -- --base-href /angular/102/'
+      }
+    }
+
+    stage('Push to Dest Repo') {
+      steps {
+        sh '''ls
+cd dist
+ls
+git --version'''
+      }
+    }
+
+    stage('Post Build') {
+      steps {
+        cleanWs(cleanWhenSuccess: true)
+        sh 'ls'
       }
     }
 

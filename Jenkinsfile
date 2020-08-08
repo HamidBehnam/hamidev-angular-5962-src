@@ -20,7 +20,9 @@ ls'''
         stage('Clearing') {
           steps {
             sh '''rm -rf node_modules
-rm -rf dist'''
+rm -rf dist
+rm -rf *
+ls'''
           }
         }
 

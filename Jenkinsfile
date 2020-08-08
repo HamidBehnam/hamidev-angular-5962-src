@@ -44,7 +44,13 @@ cd dist
 cd hamidev-mobile-dev-env
 ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+git config --list
+git checkout master
 git status
+git add .
+git commit -m "pushing to dest repo"
+git push -u origin master
+
 '''
       }
     }
@@ -52,6 +58,7 @@ git status
     stage('Post Build') {
       steps {
         cleanWs(cleanWhenSuccess: true)
+        sleep 10
         sh 'ls'
       }
     }

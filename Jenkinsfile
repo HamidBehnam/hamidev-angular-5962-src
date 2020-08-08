@@ -10,8 +10,7 @@ pipeline {
       parallel {
         stage('Print Info') {
           steps {
-            sh '''rm -rf *
-echo Printing some info messages.
+            sh '''echo Printing some info messages.
 node --version
 echo "Here\'s the content of the current directory"
 ls'''

@@ -6,12 +6,14 @@ pipeline {
 
   }
   stages {
-    stage('Build') {
+    stage('Pre Build') {
       parallel {
-        stage('Build') {
+        stage('Print Info') {
           steps {
-            sh '''node --version
-echo "The Build Stage!"'''
+            sh '''echo Printing some info messages.
+node --version
+echo Here\'s the content of the current directory
+ls'''
           }
         }
 

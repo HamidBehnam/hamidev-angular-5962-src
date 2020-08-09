@@ -43,7 +43,7 @@ rm -rf dist'''
         sh '''ls -la
 rm -rf .npm
 ls -la'''
-        git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master', credentialsId: 'github')
+        git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master', credentialsId: 'github_cred')
         sh '''cp -a dist/hamidev-mobile-dev-env/. .
 rm -rf dist
 git config user.name "HamidBehnam"

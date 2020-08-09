@@ -39,14 +39,15 @@ rm -rf dist'''
 
     stage('Push to Dest Repo') {
       steps {
-        sh '''ls
-cd dist
-ls
-
-'''
+        sh '''echo "Creating a backup folder of the dist content!"
+cp -a dist/hamidev-mobile-dev-env/. something/'''
         git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master')
         sh '''ls
-'''
+cp dist/hamidev-mobile-dev-env/index.html index_copy.html
+git status
+git branch
+git add .
+git status'''
       }
     }
 

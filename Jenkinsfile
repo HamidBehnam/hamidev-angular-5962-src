@@ -49,7 +49,10 @@ rm -rf dist
 git status
 git branch
 git add .
-git status'''
+git commit -m "pushing some changed to the dest repo by jenkins"
+git push -u origin master
+git status
+git branch'''
       }
     }
 

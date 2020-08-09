@@ -40,9 +40,11 @@ rm -rf dist'''
     stage('Push to Dest Repo') {
       steps {
         sh 'rm -rf node_modules'
+        sh '''ls -la
+rm -rf .npm
+ls -la'''
         git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master')
-        sh '''ls
-cp -a dist/hamidev-mobile-dev-env/. .
+        sh '''cp -a dist/hamidev-mobile-dev-env/. .
 rm -rf dist
 git status
 git branch

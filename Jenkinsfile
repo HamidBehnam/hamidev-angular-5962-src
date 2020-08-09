@@ -39,12 +39,12 @@ rm -rf dist'''
 
     stage('Push to Dest Repo') {
       steps {
-        git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master')
         sh '''ls
 cd dist
 ls
 
 '''
+        git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master')
       }
     }
 

@@ -45,6 +45,8 @@ ls
 
 '''
         git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master')
+        sh '''ls
+'''
       }
     }
 

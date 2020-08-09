@@ -53,7 +53,7 @@ git config user.email "hamid.behnam@gmail.com"
 git status
 git add .
 git commit -m "pushing the build result to the dest repo"
-git push -u origin master
+git push -u jenkins master
 git status
 git branch
 '''

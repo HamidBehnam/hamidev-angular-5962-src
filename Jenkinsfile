@@ -51,6 +51,7 @@ git branch
 git checkout master
 git status
 git add -u
+git status
 
 '''
       }

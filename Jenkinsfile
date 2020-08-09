@@ -50,9 +50,7 @@ git config user.email "jenkis@hamidev.com"
 git branch
 git checkout master
 git status
-git add .
-git commit -m "pushing to dest repo"
-git push -u origin master
+git add -u
 
 '''
       }

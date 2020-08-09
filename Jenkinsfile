@@ -48,8 +48,8 @@ cd hamidev-mobile-dev-env-angular-dest
 ls
 git remote add jenkins https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 git config --list
-git config user.name "jenkins"
-git config user.email "jenkis@hamidev.com"
+git config user.name "HamidBehnam"
+git config user.email "hamid.behnam@gmail.com"
 git status
 git add .
 git commit -m "pushing the build result to the dest repo"

@@ -41,16 +41,17 @@ rm -rf dist'''
       steps {
         sh '''ls
 cd dist
-cd hamidev-mobile-dev-env
 ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-dest/
+cd hamidev-mobile-dev-env-dest
 git config --list
 git config user.name "jenkins"
 git config user.email "jenkis@hamidev.com"
 git branch
 git checkout master
 git status
-git add -u
+git add .
 git status
 
 '''

@@ -51,7 +51,7 @@ git config --list
 git config user.name "jenkins"
 git config user.email "jenkis@hamidev.com"
 git branch
-git checkout master
+git checkout jenkins/master
 git status
 git add .
 git status

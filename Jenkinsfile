@@ -50,8 +50,6 @@ git remote add jenkins https://github.com/HamidBehnam/hamidev-mobile-dev-env-ang
 git config --list
 git config user.name "jenkins"
 git config user.email "jenkis@hamidev.com"
-git branch
-git checkout jenkins/master
 git status
 git add .
 git status

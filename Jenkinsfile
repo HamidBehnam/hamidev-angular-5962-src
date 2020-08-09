@@ -50,6 +50,7 @@ git config --list
 git config user.name "jenkins"
 git config user.email "jenkis@hamidev.com"
 git branch
+git fetch
 git checkout master
 git status
 git add .

@@ -52,7 +52,7 @@ git config user.email "jenkis@hamidev.com"
 git branch
 git remote update
 git fetch 
-git checkout --track origin/master
+git checkout origin/master
 git status
 git add .
 git status

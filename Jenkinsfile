@@ -52,7 +52,6 @@ ls
 
     stage('Post Build') {
       steps {
-        cleanWs(cleanWhenSuccess: true)
         sleep 10
         sh 'ls'
       }

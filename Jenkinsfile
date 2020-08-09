@@ -39,23 +39,11 @@ rm -rf dist'''
 
     stage('Push to Dest Repo') {
       steps {
+        git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master')
         sh '''ls
 cd dist
 ls
-git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
-cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
-cd hamidev-mobile-dev-env-angular-dest
-ls
-git remote add jenkins https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
-git config --list
-git config user.name "HamidBehnam"
-git config user.email "hamid.behnam@gmail.com"
-git status
-git add .
-git commit -m "pushing the build result to the dest repo"
-git push -u jenkins master
-git status
-git branch
+
 '''
       }
     }

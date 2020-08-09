@@ -52,8 +52,10 @@ git config user.name "jenkins"
 git config user.email "jenkis@hamidev.com"
 git status
 git add .
+git commit -m "pushing the build result to the dest repo"
+git push -u origin master
 git status
-
+git branch
 '''
       }
     }

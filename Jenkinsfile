@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('prepare .env') {
       steps {
-        withCredentials([string(credentialsId: 'github_cred', usernameVariable: 'username', passwordVariable: 'passvar')]) {
+        withCredentials([usernamePassword(credentialsId: 'github_cred', usernameVariable: 'username', passwordVariable: 'passvar')]) {
           sh "echo ${username}"
         }
       }

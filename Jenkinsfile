@@ -39,9 +39,9 @@ rm -rf dist'''
 
     stage('Push to Dest Repo') {
       steps {
-        sh '''withCredentials([usernamePassword(credentialsId: \'github_cred\', passwordVariable: \'GIT_PASSWORD\', usernameVariable: \'GIT_USERNAME\')]) {
-    node --version
-}'''
+        sh '''withCredentials([string(credentialsId: \'github_cred_text\', variable: \'SECRET\')]) {
+        echo "My secret text is \'${SECRET}\'"
+    }'''
         }
       }
 

@@ -42,7 +42,9 @@ rm -rf dist'''
         sh '''git ls-remote --heads
 cd dist
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
+ls
 git ls-remote --heads
 git config user.name "HamidBehnam"
 git config user.email "hamid.behnam@gmail.com"

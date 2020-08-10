@@ -32,7 +32,6 @@ rm -rf dist'''
     }
     }
     }
-    }
 
 
 // pipeline {

@@ -40,7 +40,7 @@ rm -rf dist'''
     stage('Push to Dest Repo') {
       steps {
         sh '''withCredentials([usernamePassword(credentialsId: \'github_cred\', passwordVariable: \'GIT_PASSWORD\', usernameVariable: \'GIT_USERNAME\')]) {
-    echo "this is the content"
+    node --version
 }'''
         }
       }

@@ -39,21 +39,22 @@ rm -rf dist'''
 
     stage('Push to Dest Repo') {
       steps {
-        sh '''withCredentials([string(credentialsId: \'github_cred_text\', variable: \'SECRET\')]) {
+        sh '''#!/bin/bash
+withCredentials([string(credentialsId: \'github_cred_text\', variable: \'SECRET\')]) {
         echo "My secret text is \'${SECRET}\'"
     }'''
-        }
       }
+    }
 
-      stage('Post Build') {
-        steps {
-          sleep 20
-          sh 'ls'
-        }
+    stage('Post Build') {
+      steps {
+        sleep 20
+        sh 'ls'
       }
+    }
 
-    }
-    environment {
-      HOME = '.'
-    }
   }
+  environment {
+    HOME = '.'
+  }
+}

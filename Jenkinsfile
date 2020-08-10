@@ -1,17 +1,11 @@
 pipeline {
-    agent {
-      docker {
-        image 'node'
-      }
+  agent {
+    docker {
+      image 'node'
     }
+
+  }
   stages {
-    stage('prepare .env') {
-      steps {
-        withCredentials([string(credentialsId: 'github_cred_text', variable: 'SECRET')]) {
-          sh "echo ${SECRET}"
-        }
-      }
-    }
     stage('Pre Build') {
       parallel {
         stage('Print Info') {
@@ -33,10 +27,53 @@ rm -rf dist'''
             sh 'npm install'
           }
         }
+
       }
     }
-  }
-}
+    }
+    }
+    }
+
+
+// pipeline {
+//     agent {
+//       docker {
+//         image 'node'
+//       }
+//     }
+//   stages {
+//     stage('prepare .env') {
+//       steps {
+//         withCredentials([string(credentialsId: 'github_cred_text', variable: 'SECRET')]) {
+//           sh "echo ${SECRET}"
+//         }
+//       }
+//     }
+//     stage('Pre Build') {
+//       parallel {
+//         stage('Print Info') {
+//           steps {
+//             sh '''node --version
+// ls'''
+//           }
+//         }
+//
+//         stage('Clearing') {
+//           steps {
+//             sh '''rm -rf node_modules
+// rm -rf dist'''
+//           }
+//         }
+//
+//         stage('Install npm dependencies') {
+//           steps {
+//             sh 'npm install'
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 
 // pipeline {

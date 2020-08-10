@@ -53,7 +53,7 @@ git branch
 git add .
 git commit -m "pushing some changed to the dest repo by jenkins"
 withCredentials([usernamePassword(credentialsId: \'github_cred\', passwordVariable: \'GIT_PASSWORD\', usernameVariable: \'GIT_USERNAME\')]) {
-    git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git')
 }
 git status
 git branch'''

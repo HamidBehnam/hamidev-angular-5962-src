@@ -6,19 +6,6 @@ pipeline {
 
   }
   stages {
-    stage('prepare .env') {
-      steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'username', passwordVariable: 'passvar')]) {
-          sh "echo ${username}"
-          sh '''touch something.html
-git add .
-git commit -m "adding a test file"
-git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular.git'''
-        }
-
-      }
-    }
-
     stage('Pre Build') {
       parallel {
         stage('Print Info') {
@@ -39,6 +26,19 @@ rm -rf dist'''
           steps {
             sh 'npm install'
           }
+        }
+
+      }
+    }
+
+    stage('prepare .env') {
+      steps {
+        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'username', passwordVariable: 'passvar')]) {
+          sh "echo ${username}"
+          sh '''touch something2.html
+git add .
+git commit -m "adding a test file"
+git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular.git'''
         }
 
       }

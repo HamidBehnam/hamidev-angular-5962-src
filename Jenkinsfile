@@ -39,10 +39,14 @@ rm -rf dist'''
 
     stage('Push to Dest Repo') {
       steps {
-        sh '''#!/bin/bash
-withCredentials([string(credentialsId: \'github_cred_text\', variable: \'SECRET\')]) {
-        echo "My secret text is \'${SECRET}\'"
-    }'''
+        sh '''ls
+touch something.html
+git status
+git branch
+git add .
+git commit -m "adding a test file by jenkins"
+git push -u origin master
+git status'''
       }
     }
 

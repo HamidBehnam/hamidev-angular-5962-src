@@ -13,7 +13,7 @@ pipeline {
           sh '''touch something.html
 git add .
 git commit -m "adding a test file"
-git push -u origin master'''
+git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular.git'''
         }
 
       }

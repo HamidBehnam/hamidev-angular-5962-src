@@ -44,15 +44,15 @@ cd dist
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 cd hamidev-mobile-dev-env-angular-dest
 git ls-remote --heads
-#git config user.name "HamidBehnam"
-#git config user.email "hamid.behnam@gmail.com"
-#git status
-#git branch
-#git add .
-#git commit -m "pushing some changed to the dest repo by jenkins"
-#git push -u origin master
-#git status
-#git branch'''
+git config user.name "HamidBehnam"
+git config user.email "hamid.behnam@gmail.com"
+git status
+git branch
+git add .
+git commit -m "pushing some changed to the dest repo by jenkins"
+git push --set-upstream origin
+git status
+git branch'''
       }
     }
 

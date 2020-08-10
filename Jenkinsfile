@@ -39,28 +39,26 @@ rm -rf dist'''
 
     stage('Push to Dest Repo') {
       steps {
-        sh 'rm -rf node_modules'
-        sh '''ls -la
-rm -rf .npm
-ls -la'''
-        git(url: 'https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git', branch: 'master', credentialsId: 'github_cred')
-        sh '''cp -a dist/hamidev-mobile-dev-env/. .
-rm -rf dist
-git config user.name "HamidBehnam"
-git config user.email "hamid.behnam@gmail.com"
-git status
-git branch
-git add .
-git commit -m "pushing some changed to the dest repo by jenkins"
-git push -u origin master
-git status
-git branch'''
+        sh '''git ls-remote --heads
+cd dist
+git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+cd hamidev-mobile-dev-env-angular-dest
+git ls-remote --heads
+#git config user.name "HamidBehnam"
+#git config user.email "hamid.behnam@gmail.com"
+#git status
+#git branch
+#git add .
+#git commit -m "pushing some changed to the dest repo by jenkins"
+#git push -u origin master
+#git status
+#git branch'''
       }
     }
 
     stage('Post Build') {
       steps {
-        sleep 10
+        sleep 20
         sh 'ls'
       }
     }

@@ -53,9 +53,7 @@ git branch
 git add .
 git commit -m "pushing some changed to the dest repo by jenkins"
 withCredentials([usernamePassword(credentialsId: 'github_cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-    sh '''
-      echo "this is the content"
-    '''
+    sh '''echo "this is the content"
   }
 git status
 git branch'''

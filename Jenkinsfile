@@ -30,7 +30,7 @@ rm -rf dist'''
 
       }
     }
-    
+
     stage('Build') {
       steps {
         sh 'npm run build -- --base-href /angular/102/'
@@ -41,9 +41,15 @@ rm -rf dist'''
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'username', passwordVariable: 'passvar')]) {
           sh "echo ${username}"
-          sh '''touch something3.html
+          sh '''cd dist
+ls
+git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+ls
+cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
+cd hamidev-mobile-dev-env-angular-dest
+ls
 git add .
-git commit -m "adding a test file, something3.html"
+git commit -m "adding the build files to the dest repo"
 git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular.git'''
         }
 

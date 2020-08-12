@@ -46,11 +46,13 @@ ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 ls
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
-#cd hamidev-mobile-dev-env-angular-dest
+cd hamidev-mobile-dev-env-angular-dest
 ls
+git config user.name "HamidBehnam"
+git config user.email "hamid.behnam@gmail.com"
 git add -u
 git commit -m "adding the build files to the dest repo"
-git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular.git'''
+git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
         }
 
       }

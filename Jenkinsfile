@@ -30,6 +30,12 @@ rm -rf dist'''
 
       }
     }
+    
+    stage('Build') {
+      steps {
+        sh 'npm run build -- --base-href /angular/102/'
+      }
+    }
 
     stage('prepare .env') {
       steps {

@@ -50,7 +50,7 @@ cd hamidev-mobile-dev-env-angular-dest
 ls
 git add .
 git commit -m "adding the build files to the dest repo"
-git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular.git'''
         }
 
       }

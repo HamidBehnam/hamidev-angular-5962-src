@@ -48,7 +48,7 @@ ls
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 #cd hamidev-mobile-dev-env-angular-dest
 ls
-git add .
+git add -u
 git commit -m "adding the build files to the dest repo"
 git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular.git'''
         }

@@ -46,7 +46,7 @@ ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 ls
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
-cd hamidev-mobile-dev-env-angular-dest
+#cd hamidev-mobile-dev-env-angular-dest
 ls
 git add .
 git commit -m "adding the build files to the dest repo"

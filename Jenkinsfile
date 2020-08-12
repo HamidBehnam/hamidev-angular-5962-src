@@ -35,9 +35,9 @@ rm -rf dist'''
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'username', passwordVariable: 'passvar')]) {
           sh "echo ${username}"
-          sh '''touch something2.html
+          sh '''touch something3.html
 git add .
-git commit -m "adding a test file"
+git commit -m "adding a test file, something3.html"
 git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular.git'''
         }
 

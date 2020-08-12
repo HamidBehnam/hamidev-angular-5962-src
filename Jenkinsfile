@@ -51,7 +51,7 @@ ls
 git config user.name "HamidBehnam"
 git config user.email "hamid.behnam@gmail.com"
 git add .
-git commit -m "adding the build files to the dest repo"
+git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
 git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
         }
 

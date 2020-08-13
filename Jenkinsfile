@@ -37,7 +37,7 @@ rm -rf dist'''
       }
     }
 
-    stage('prepare .env') {
+    stage('Push to Dest Repo') {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'username', passwordVariable: 'passvar')]) {
           sh "echo ${username}"

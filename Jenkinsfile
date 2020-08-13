@@ -40,7 +40,7 @@ rm -rf dist'''
     stage('Push to Dest Repo') {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-          sh "echo ${username}"
+          sh "echo ${GIT_USERNAME}"
           sh '''cd dist
 ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git

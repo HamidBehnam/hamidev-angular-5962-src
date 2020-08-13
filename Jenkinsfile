@@ -39,7 +39,7 @@ rm -rf dist'''
 
     stage('Push to Dest Repo') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'username', passwordVariable: 'passvar')]) {
+        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
           sh "echo ${username}"
           sh '''cd dist
 ls
@@ -52,7 +52,7 @@ git config user.name "HamidBehnam"
 git config user.email "hamid.behnam@gmail.com"
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
-git push https://${username}:${passvar}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
         }
 
       }

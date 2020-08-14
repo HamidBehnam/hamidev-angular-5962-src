@@ -37,7 +37,7 @@ rm -rf dist'''
       }
     }
 
-    stage('Push to Dest Repo') {
+    stage('Push to Dest Repo - master') {
       when {
         branch 'master'
       }
@@ -49,6 +49,32 @@ ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 cd hamidev-mobile-dev-env-angular-dest
 git checkout master
+git fetch
+cd ..
+cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
+cd hamidev-mobile-dev-env-angular-dest
+git config user.name "HamidBehnam"
+git config user.email "hamid.behnam@gmail.com"
+git add .
+git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
+git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+        }
+
+      }
+    }
+
+    stage('Push to Dest Repo - qa') {
+      when {
+        branch 'master'
+      }
+      steps {
+        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+          sh "echo ${GIT_USERNAME}"
+          sh '''cd dist
+ls
+git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+cd hamidev-mobile-dev-env-angular-dest
+git checkout -b qa
 git fetch
 cd ..
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/

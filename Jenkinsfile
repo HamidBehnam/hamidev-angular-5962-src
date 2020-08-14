@@ -37,10 +37,10 @@ rm -rf dist'''
       }
     }
 
-    when {
-      branch 'master'
-    }
     stage('Push to Dest Repo') {
+      when {
+        branch 'master'
+      }
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
           sh "echo ${GIT_USERNAME}"

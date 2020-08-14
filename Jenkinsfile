@@ -49,7 +49,7 @@ ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 cd hamidev-mobile-dev-env-angular-dest
 git checkout master
-git fetch
+git pull
 cd ..
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
@@ -75,7 +75,8 @@ ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 cd hamidev-mobile-dev-env-angular-dest
 git checkout -b qa
-git fetch
+#this condition is added to make sure we're running git pull if the branch remote exists. No need to do this for the master since already exists.
+(git ls-remote --quiet --heads | grep -q qa && true || false) && git pull
 cd ..
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest

@@ -65,7 +65,7 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
 
     stage('Push to Dest Repo - qa') {
       when {
-        branch 'master'
+        branch 'qa'
       }
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {

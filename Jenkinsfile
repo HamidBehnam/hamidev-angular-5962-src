@@ -47,10 +47,12 @@ rm -rf dist'''
           sh '''cd dist
 ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
-ls
+cd hamidev-mobile-dev-env-angular-dest
+git checkout master
+git pull
+cd ..
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
-ls
 git config user.name "HamidBehnam"
 git config user.email "hamid.behnam@gmail.com"
 git add .

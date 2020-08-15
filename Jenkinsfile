@@ -37,6 +37,12 @@ rm -rf dist'''
       }
     }
 
+    post {
+      success {
+          echo 'this is the post-processor after finishing the build stage!'
+      }
+    }
+
     stage('Push to Dest Repo - master') {
       when {
         branch 'master'

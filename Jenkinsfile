@@ -35,11 +35,11 @@ rm -rf dist'''
       steps {
         sh 'npm run build -- --base-href /angular/102/'
       }
-    }
 
-    post {
-      success {
-          echo 'this is the post-processor after finishing the build stage!'
+      post {
+        success {
+            echo 'this is the post-processor after finishing the build stage!'
+        }
       }
     }
 

@@ -38,7 +38,7 @@ rm -rf dist'''
           step([$class: "RundeckNotifier",
                 includeRundeckLogs: true,
                 jobId: "3935e4d5-044d-4011-8713-875b826a585b",
-                rundeckInstance: "hamidev.com",
+                rundeckInstance: "rundeck",
                 shouldFailTheBuild: true,
                 shouldWaitForRundeckJob: true,
                 tailLog: true])

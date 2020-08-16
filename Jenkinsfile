@@ -38,7 +38,7 @@ rm -rf dist'''
 
       post {
         success {
-            echo 'this is the post-processor after finishing the build stage!'
+            archive dist/**/*
         }
       }
     }

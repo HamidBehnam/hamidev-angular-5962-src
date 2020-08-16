@@ -34,6 +34,70 @@ rm -rf dist'''
     stage('Build') {
       steps {
         sh 'npm run build -- --base-href /angular/102/'
+      }
+    }
+
+    stage('Push to Dest Repo - dev') {
+      when {
+        branch 'dev'
+      }
+      steps {
+        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+          sh "echo ${GIT_USERNAME}"
+          sh '''cd dist
+ls
+git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+cd hamidev-mobile-dev-env-angular-dest
+git checkout dev
+#make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
+git pull origin dev
+cd ..
+cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
+cd hamidev-mobile-dev-env-angular-dest
+git config user.name "HamidBehnam"
+git config user.email "hamid.behnam@gmail.com"
+git add .
+git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
+git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+        }
+
+        script {
+          step([$class: "RundeckNotifier",
+                includeRundeckLogs: true,
+                jobId: "3935e4d5-044d-4011-8713-875b826a585b",
+                rundeckInstance: "rundeck",
+                shouldFailTheBuild: true,
+                shouldWaitForRundeckJob: true,
+                tailLog: true])
+        }
+      }
+    }
+
+    stage('Push to Dest Repo - qa') {
+      when {
+        branch 'qa'
+      }
+      steps {
+        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+          sh "echo ${GIT_USERNAME}"
+          sh '''cd dist
+ls
+git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+cd hamidev-mobile-dev-env-angular-dest
+git checkout qa
+#make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
+git pull origin qa
+cd ..
+cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
+cd hamidev-mobile-dev-env-angular-dest
+git config user.name "HamidBehnam"
+git config user.email "hamid.behnam@gmail.com"
+git add .
+git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
+git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+        }
+
+
         script {
           step([$class: "RundeckNotifier",
                 includeRundeckLogs: true,
@@ -69,33 +133,15 @@ git diff --quiet && git diff --staged --quiet || git commit -am "adding the buil
 git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
         }
 
-      }
-    }
-
-    stage('Push to Dest Repo - qa') {
-      when {
-        branch 'qa'
-      }
-      steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-          sh "echo ${GIT_USERNAME}"
-          sh '''cd dist
-ls
-git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
-cd hamidev-mobile-dev-env-angular-dest
-git checkout -b qa
-#this condition is added to make sure we're running git pull if the branch remote exists. No need to do this for the master since already exists.
-(git ls-remote --quiet --heads | grep -q qa && true || false) && git pull origin qa
-cd ..
-cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
-cd hamidev-mobile-dev-env-angular-dest
-git config user.name "HamidBehnam"
-git config user.email "hamid.behnam@gmail.com"
-git add .
-git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
-git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+        script {
+          step([$class: "RundeckNotifier",
+                includeRundeckLogs: true,
+                jobId: "3935e4d5-044d-4011-8713-875b826a585b",
+                rundeckInstance: "rundeck",
+                shouldFailTheBuild: true,
+                shouldWaitForRundeckJob: true,
+                tailLog: true])
         }
-
       }
     }
 

@@ -36,7 +36,7 @@ rm -rf dist'''
         sh 'npm run build -- --base-href /angular/102/'
         step([$class: "RundeckNotifier",
               includeRundeckLogs: true,
-              jobId: "3935e4d5-044d-4011-8713-875b826a585b"
+              jobId: "3935e4d5-044d-4011-8713-875b826a585b",
               nodeFilters: "",
               options: """
                        PARAM_1="Hamid1"

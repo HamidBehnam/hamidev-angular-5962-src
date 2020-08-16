@@ -38,7 +38,7 @@ rm -rf dist'''
 
       post {
         success {
-            archive dist/**/*
+            archive "dist/**/*"
         }
       }
     }

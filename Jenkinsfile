@@ -34,12 +34,20 @@ rm -rf dist'''
     stage('Build') {
       steps {
         sh 'npm run build -- --base-href /angular/102/'
-      }
-
-      post {
-        success {
-            archiveArtifacts "dist/**/*"
-        }
+        step([$class: "RundeckNotifier",
+              includeRundeckLogs: true,
+              jobId: "3935e4d5-044d-4011-8713-875b826a585b"
+              nodeFilters: "",
+              options: """
+                       PARAM_1="Hamid1"
+                       PARAM_2="Hamid2"
+                       PARAM_3="Hamid3"
+                       """,
+              rundeckInstance: "Default",
+              shouldFailTheBuild: true,
+              shouldWaitForRundeckJob: true,
+              tags: "",
+              tailLog: true])
       }
     }
 

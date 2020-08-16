@@ -34,9 +34,6 @@ rm -rf dist'''
     stage('Build') {
       steps {
         sh 'npm run build -- --base-href /angular/102/'
-      }
-      steps {
-        sh 'npm run build -- --base-href /angular/102/'
         script {
           step([$class: "RundeckNotifier",
                 includeRundeckLogs: true,

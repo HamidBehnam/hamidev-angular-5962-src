@@ -48,7 +48,7 @@ rm -rf dist'''
 ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 cd hamidev-mobile-dev-env-angular-dest
-git checkout dev
+git checkout -b dev
 #make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
 git pull origin dev
 cd ..
@@ -84,7 +84,7 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
 ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 cd hamidev-mobile-dev-env-angular-dest
-git checkout qa
+git checkout -b qa
 #make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
 git pull origin qa
 cd ..

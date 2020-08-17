@@ -66,6 +66,11 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
                 includeRundeckLogs: true,
                 jobId: "3935e4d5-044d-4011-8713-875b826a585b",
                 rundeckInstance: "rundeck",
+                options: """
+                           project_type=angular
+                           project_path=102
+                           project_branch=dev
+                         """,
                 shouldFailTheBuild: true,
                 shouldWaitForRundeckJob: true,
                 tailLog: true])
@@ -103,6 +108,11 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
                 includeRundeckLogs: true,
                 jobId: "3935e4d5-044d-4011-8713-875b826a585b",
                 rundeckInstance: "rundeck",
+                options: """
+                           project_type=angular
+                           project_path=102
+                           project_branch=qa
+                         """,
                 shouldFailTheBuild: true,
                 shouldWaitForRundeckJob: true,
                 tailLog: true])
@@ -138,6 +148,11 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
                 includeRundeckLogs: true,
                 jobId: "3935e4d5-044d-4011-8713-875b826a585b",
                 rundeckInstance: "rundeck",
+                options: """
+                           project_type=angular
+                           project_path=102
+                           project_branch=master
+                         """,
                 shouldFailTheBuild: true,
                 shouldWaitForRundeckJob: true,
                 tailLog: true])

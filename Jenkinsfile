@@ -46,12 +46,8 @@ rm -rf dist'''
           sh "echo ${GIT_USERNAME}"
           sh '''cd dist
 ls
-git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
-cd hamidev-mobile-dev-env-angular-dest
-git checkout -b dev
 #make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
-git pull origin dev
-cd ..
+git clone --single-branch --branch dev https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
 git config user.name "HamidBehnam"

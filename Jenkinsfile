@@ -59,18 +59,19 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
 
         script {
           step([$class: "RundeckNotifier",
-                includeRundeckLogs: true,
-                jobId: "3935e4d5-044d-4011-8713-875b826a585b",
-                rundeckInstance: "rundeck",
-                options: """
-                           project_type=angular
-                           project_path=102
-                           project_branch=dev
-                         """,
-                shouldFailTheBuild: true,
-                shouldWaitForRundeckJob: true,
-                tailLog: true])
+          includeRundeckLogs: true,
+          jobId: "3935e4d5-044d-4011-8713-875b826a585b",
+          rundeckInstance: "rundeck",
+          options: """
+          project_type=angular
+          project_path=102
+          project_branch=dev
+          """,
+          shouldFailTheBuild: true,
+          shouldWaitForRundeckJob: true,
+          tailLog: true])
         }
+
       }
     }
 
@@ -94,21 +95,21 @@ git diff --quiet && git diff --staged --quiet || git commit -am "adding the buil
 git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
         }
 
-
         script {
           step([$class: "RundeckNotifier",
-                includeRundeckLogs: true,
-                jobId: "3935e4d5-044d-4011-8713-875b826a585b",
-                rundeckInstance: "rundeck",
-                options: """
-                           project_type=angular
-                           project_path=102
-                           project_branch=qa
-                         """,
-                shouldFailTheBuild: true,
-                shouldWaitForRundeckJob: true,
-                tailLog: true])
+          includeRundeckLogs: true,
+          jobId: "3935e4d5-044d-4011-8713-875b826a585b",
+          rundeckInstance: "rundeck",
+          options: """
+          project_type=angular
+          project_path=102
+          project_branch=qa
+          """,
+          shouldFailTheBuild: true,
+          shouldWaitForRundeckJob: true,
+          tailLog: true])
         }
+
       }
     }
 
@@ -134,25 +135,25 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
 
         script {
           step([$class: "RundeckNotifier",
-                includeRundeckLogs: true,
-                jobId: "3935e4d5-044d-4011-8713-875b826a585b",
-                rundeckInstance: "rundeck",
-                options: """
-                           project_type=angular
-                           project_path=102
-                           project_branch=master
-                         """,
-                shouldFailTheBuild: true,
-                shouldWaitForRundeckJob: true,
-                tailLog: true])
+          includeRundeckLogs: true,
+          jobId: "3935e4d5-044d-4011-8713-875b826a585b",
+          rundeckInstance: "rundeck",
+          options: """
+          project_type=angular
+          project_path=102
+          project_branch=master
+          """,
+          shouldFailTheBuild: true,
+          shouldWaitForRundeckJob: true,
+          tailLog: true])
         }
+
       }
     }
 
     stage('Post Build') {
       steps {
-        sleep 20
-        sh 'ls'
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true, deleteDirs: true, cleanupMatrixParent: true)
       }
     }
 

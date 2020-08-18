@@ -123,7 +123,6 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
           sh '''cd dist
 ls
 git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
-cd hamidev-mobile-dev-env-angular-dest
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
 git config user.name "HamidBehnam"

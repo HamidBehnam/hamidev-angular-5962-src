@@ -11,6 +11,7 @@ pipeline {
         stage('Print Info') {
           steps {
             sh '''node --version
+echo ${env.BRANCH_NAME}
 ls'''
           }
         }
@@ -34,7 +35,6 @@ rm -rf dist'''
     stage('Build') {
       steps {
         sh 'npm run build -- --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/'
-        sh '''echo ${env.BRANCH_NAME}'''
       }
     }
 

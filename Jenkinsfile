@@ -60,8 +60,8 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
         script {
           step([$class: "RundeckNotifier",
           includeRundeckLogs: true,
-          jobId: ${RUNDECK_JOB_ID},
-          rundeckInstance: ${RUNDECK_INSTANCE},
+          jobId: "${RUNDECK_JOB_ID}",
+          rundeckInstance: "${RUNDECK_INSTANCE}",
           options: """
           project_type=${PROJECT_TYPE}
           project_path=${PROJECT_PATH}
@@ -98,8 +98,8 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
         script {
           step([$class: "RundeckNotifier",
           includeRundeckLogs: true,
-          jobId: ${RUNDECK_JOB_ID},
-          rundeckInstance: ${RUNDECK_INSTANCE},
+          jobId: "${RUNDECK_JOB_ID}",
+          rundeckInstance: "${RUNDECK_INSTANCE}",
           options: """
           project_type=${PROJECT_TYPE}
           project_path=${PROJECT_PATH}
@@ -135,8 +135,8 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
         script {
           step([$class: "RundeckNotifier",
           includeRundeckLogs: true,
-          jobId: ${RUNDECK_JOB_ID},
-          rundeckInstance: ${RUNDECK_INSTANCE},
+          jobId: "${RUNDECK_JOB_ID}",
+          rundeckInstance: "${RUNDECK_INSTANCE}",
           options: """
           project_type=${PROJECT_TYPE}
           project_path=${PROJECT_PATH}

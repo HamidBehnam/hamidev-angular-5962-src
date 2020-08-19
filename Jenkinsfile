@@ -33,7 +33,15 @@ rm -rf dist'''
 
     stage('Build') {
       steps {
-        sh 'npm run build -- --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/'
+        sh '''if [ ${BRANCH_NAME} = "qa" ]
+              then
+              npm run build -- --prod --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/
+              elif [ ${BRANCH_NAME} = "master" ]
+              then
+              npm run build -- --prod --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/
+              else
+              npm run build -- --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/
+              fi'''
       }
     }
 

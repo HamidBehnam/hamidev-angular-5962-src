@@ -50,7 +50,7 @@ cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
-git push https://${DEST_REPO}'''
+git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
 
         script {
           step([$class: "RundeckNotifier",

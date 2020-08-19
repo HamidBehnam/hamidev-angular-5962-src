@@ -152,7 +152,8 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
     PROJECT_PATH = '583'
     RUNDECK_JOB_ID = '3935e4d5-044d-4011-8713-875b826a585b'
     RUNDECK_INSTANCE = 'rundeck'
-    SRC_PROJECT_NAME = 'hamidev-mobile-dev-env' # you can find this in the defaultProject property in the angular.json file
+    # you can find the value for SRC_PROJECT_NAME in the defaultProject property in the angular.json file
+    SRC_PROJECT_NAME = 'hamidev-mobile-dev-env'
     DEST_PROJECT_NAME = 'hamidev-mobile-dev-env-angular-dest'
     DEST_REPO = 'github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'
   }

@@ -12,6 +12,18 @@ pipeline {
           steps {
             sh '''node --version
 echo ${BRANCH_NAME}
+if [ ${BRANCH_NAME} = "dev" ]
+then
+echo "this is dev"
+elif [ ${BRANCH_NAME} = "qa" ]
+then
+echo "this is qa"
+elif [ ${BRANCH_NAME} = "master" ]
+then
+echo "this is master"
+else
+echo "the branch is something else"
+fi
 ls'''
           }
         }

@@ -33,7 +33,7 @@ rm -rf dist'''
 
     stage('Build') {
       steps {
-        sh 'npm run build -- --base-href /angular/102/'
+        sh 'npm run build -- --base-href /${PROJECT_TYPE}/${PROJECT_PATH}/'
       }
     }
 
@@ -60,11 +60,11 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
         script {
           step([$class: "RundeckNotifier",
           includeRundeckLogs: true,
-          jobId: "3935e4d5-044d-4011-8713-875b826a585b",
-          rundeckInstance: "rundeck",
+          jobId: ${RUNDECK_JOB_ID},
+          rundeckInstance: ${RUNDECK_INSTANCE},
           options: """
-          project_type=angular
-          project_path=102
+          project_type=${PROJECT_TYPE}
+          project_path=${PROJECT_PATH}
           project_branch=dev
           """,
           shouldFailTheBuild: true,
@@ -98,11 +98,11 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
         script {
           step([$class: "RundeckNotifier",
           includeRundeckLogs: true,
-          jobId: "3935e4d5-044d-4011-8713-875b826a585b",
-          rundeckInstance: "rundeck",
+          jobId: ${RUNDECK_JOB_ID},
+          rundeckInstance: ${RUNDECK_INSTANCE},
           options: """
-          project_type=angular
-          project_path=102
+          project_type=${PROJECT_TYPE}
+          project_path=${PROJECT_PATH}
           project_branch=qa
           """,
           shouldFailTheBuild: true,
@@ -135,11 +135,11 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
         script {
           step([$class: "RundeckNotifier",
           includeRundeckLogs: true,
-          jobId: "3935e4d5-044d-4011-8713-875b826a585b",
-          rundeckInstance: "rundeck",
+          jobId: ${RUNDECK_JOB_ID},
+          rundeckInstance: ${RUNDECK_INSTANCE},
           options: """
-          project_type=angular
-          project_path=102
+          project_type=${PROJECT_TYPE}
+          project_path=${PROJECT_PATH}
           project_branch=master
           """,
           shouldFailTheBuild: true,
@@ -159,5 +159,9 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
   }
   environment {
     HOME = '.'
+    PROJECT_TYPE = 'angular'
+    PROJECT_PATH = '105'
+    RUNDECK_JOB_ID = '3935e4d5-044d-4011-8713-875b826a585b'
+    RUNDECK_INSTANCE = 'rundeck'
   }
 }

@@ -11,19 +11,6 @@ pipeline {
         stage('Print Info') {
           steps {
             sh '''node --version
-echo ${BRANCH_NAME}
-if [ ${BRANCH_NAME} = "dev" ]
-then
-echo "this is dev"
-elif [ ${BRANCH_NAME} = "qa" ]
-then
-echo "this is qa"
-elif [ ${BRANCH_NAME} = "master" ]
-then
-echo "this is master"
-else
-echo "the branch is something else"
-fi
 ls'''
           }
         }
@@ -46,7 +33,15 @@ rm -rf dist'''
 
     stage('Build') {
       steps {
-        sh 'npm run build -- --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/'
+        sh '''if [ ${BRANCH_NAME} = "qa" ]
+              then
+              npm run build -- --prod --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/
+              elif [ ${BRANCH_NAME} = "master" ]
+              then
+              npm run build -- --prod --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/
+              else
+              npm run build -- --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/
+              fi'''
       }
     }
 

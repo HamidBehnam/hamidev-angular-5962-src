@@ -56,6 +56,8 @@ ls
 git clone --single-branch --branch dev https://${DEST_REPO}
 cp -a ${SRC_PROJECT_NAME}/. ${DEST_PROJECT_NAME}/
 cd ${DEST_PROJECT_NAME}
+git config user.name "${GITHUB_CRED_USR}"
+git config user.email "${GITHUB_USER_EMAIL}"
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
 git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
@@ -90,6 +92,8 @@ ls
 git clone --single-branch --branch qa https://${DEST_REPO}
 cp -a ${SRC_PROJECT_NAME}/. ${DEST_PROJECT_NAME}/
 cd ${DEST_PROJECT_NAME}
+git config user.name "${GITHUB_CRED_USR}"
+git config user.email "${GITHUB_USER_EMAIL}"
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
 git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
@@ -123,6 +127,8 @@ ls
 git clone https://${DEST_REPO}
 cp -a ${SRC_PROJECT_NAME}/. ${DEST_PROJECT_NAME}/
 cd ${DEST_PROJECT_NAME}
+git config user.name "${GITHUB_CRED_USR}"
+git config user.email "${GITHUB_USER_EMAIL}"
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
 git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
@@ -156,6 +162,7 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
   environment {
     HOME = '.'
     GITHUB_CRED = credentials('github_cred')
+    GITHUB_USER_EMAIL = credentials('github_user_email')
     PROJECT_CATEGORY = 'angular'
     PROJECT_PATH = '583'
     RUNDECK_JOB_ID = '3935e4d5-044d-4011-8713-875b826a585b'

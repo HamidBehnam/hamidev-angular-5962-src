@@ -33,7 +33,7 @@ rm -rf dist'''
 
     stage('Build') {
       steps {
-        sh 'npm run build -- --base-href /${PROJECT_TYPE}/${PROJECT_PATH}/'
+        sh 'npm run build -- --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/'
       }
     }
 
@@ -47,14 +47,14 @@ rm -rf dist'''
           sh '''cd dist
 ls
 #make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
-git clone --single-branch --branch dev https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+git clone --single-branch --branch dev https://${DEST_REPO}
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
 git config user.name "HamidBehnam"
 git config user.email "hamid.behnam@gmail.com"
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
-git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''
         }
 
         script {
@@ -63,9 +63,9 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
           jobId: "${RUNDECK_JOB_ID}",
           rundeckInstance: "${RUNDECK_INSTANCE}",
           options: """
-          project_type=${PROJECT_TYPE}
+          project_category=${PROJECT_CATEGORY}
           project_path=${PROJECT_PATH}
-          project_branch=dev
+          deployment_branch=dev
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,
@@ -85,14 +85,14 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
           sh '''cd dist
 ls
 #make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
-git clone --single-branch --branch qa https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+git clone --single-branch --branch qa https://${DEST_REPO}
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
 git config user.name "HamidBehnam"
 git config user.email "hamid.behnam@gmail.com"
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
-git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''
         }
 
         script {
@@ -101,9 +101,9 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
           jobId: "${RUNDECK_JOB_ID}",
           rundeckInstance: "${RUNDECK_INSTANCE}",
           options: """
-          project_type=${PROJECT_TYPE}
+          project_category=${PROJECT_CATEGORY}
           project_path=${PROJECT_PATH}
-          project_branch=qa
+          deployment_branch=qa
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,
@@ -122,14 +122,14 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
           sh "echo ${GIT_USERNAME}"
           sh '''cd dist
 ls
-git clone https://github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git
+git clone https://${DEST_REPO}
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
 git config user.name "HamidBehnam"
 git config user.email "hamid.behnam@gmail.com"
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
-git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'''
+git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''
         }
 
         script {
@@ -138,9 +138,9 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
           jobId: "${RUNDECK_JOB_ID}",
           rundeckInstance: "${RUNDECK_INSTANCE}",
           options: """
-          project_type=${PROJECT_TYPE}
+          project_category=${PROJECT_CATEGORY}
           project_path=${PROJECT_PATH}
-          project_branch=master
+          deployment_branch=master
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,
@@ -159,9 +159,10 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
   }
   environment {
     HOME = '.'
-    PROJECT_TYPE = 'angular'
-    PROJECT_PATH = '106'
+    PROJECT_CATEGORY = 'angular'
+    PROJECT_PATH = '107'
     RUNDECK_JOB_ID = '3935e4d5-044d-4011-8713-875b826a585b'
     RUNDECK_INSTANCE = 'rundeck'
+    DEST_REPO = 'github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'
   }
 }

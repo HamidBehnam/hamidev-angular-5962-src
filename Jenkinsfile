@@ -50,6 +50,7 @@ ls
 git clone --single-branch --branch dev https://${DEST_REPO}
 cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
+git pull
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
 git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''

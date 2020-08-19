@@ -34,6 +34,7 @@ rm -rf dist'''
     stage('Build') {
       steps {
         sh 'npm run build -- --base-href /${PROJECT_CATEGORY}/${PROJECT_PATH}/'
+        sh '''echo ${env.BRANCH_NAME}'''
       }
     }
 

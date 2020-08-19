@@ -160,7 +160,7 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/HamidBehnam/hamidev-
   environment {
     HOME = '.'
     PROJECT_TYPE = 'angular'
-    PROJECT_PATH = '105'
+    PROJECT_PATH = '106'
     RUNDECK_JOB_ID = '3935e4d5-044d-4011-8713-875b826a585b'
     RUNDECK_INSTANCE = 'rundeck'
   }

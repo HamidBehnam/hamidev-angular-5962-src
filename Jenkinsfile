@@ -11,7 +11,7 @@ pipeline {
         stage('Print Info') {
           steps {
             sh '''node --version
-echo ${env.BRANCH_NAME}
+echo ${BRANCH_NAME}
 ls'''
           }
         }

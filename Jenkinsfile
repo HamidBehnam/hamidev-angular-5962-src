@@ -42,8 +42,6 @@ rm -rf dist'''
         branch 'dev'
       }
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'github_cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-          sh "echo ${GIT_USERNAME}"
           sh '''cd dist
 ls
 #make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
@@ -52,8 +50,7 @@ cp -a hamidev-mobile-dev-env/. hamidev-mobile-dev-env-angular-dest/
 cd hamidev-mobile-dev-env-angular-dest
 git add .
 git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
-git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''
-        }
+git push https://${DEST_REPO}'''
 
         script {
           step([$class: "RundeckNotifier",
@@ -156,7 +153,7 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''
   }
   environment {
     HOME = '.'
-    GITHUB_EMAIL = credentials('github_user_email')
+    GITHUB_CRED = credentials('github_cred')
     PROJECT_CATEGORY = 'angular'
     PROJECT_PATH = '583'
     RUNDECK_JOB_ID = '3935e4d5-044d-4011-8713-875b826a585b'

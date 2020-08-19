@@ -66,6 +66,7 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''
           project_category=${PROJECT_CATEGORY}
           project_path=${PROJECT_PATH}
           deployment_branch=dev
+          dest_repo=${DEST_REPO}
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,
@@ -104,6 +105,7 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''
           project_category=${PROJECT_CATEGORY}
           project_path=${PROJECT_PATH}
           deployment_branch=qa
+          dest_repo=${DEST_REPO}
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,
@@ -141,6 +143,7 @@ git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${DEST_REPO}'''
           project_category=${PROJECT_CATEGORY}
           project_path=${PROJECT_PATH}
           deployment_branch=master
+          dest_repo=${DEST_REPO}
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,

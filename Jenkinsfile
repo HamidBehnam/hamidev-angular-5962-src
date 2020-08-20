@@ -64,22 +64,26 @@ rm -rf dist'''
         sh '''
           if [ ${BRANCH_NAME} = "master" ] || [ ${BRANCH_NAME} = "qa" ] || [ ${BRANCH_NAME} = "dev" ]
           then
-            step([$class: "RundeckNotifier",
-            includeRundeckLogs: true,
-            jobId: "${RUNDECK_JOB_ID}",
-            rundeckInstance: "${RUNDECK_INSTANCE}",
-            options: """
-            project_category=${PROJECT_CATEGORY}
-            project_path=${PROJECT_PATH}
-            deployment_branch=${BRANCH_NAME}
-            dest_repo=${DEST_REPO}
-            domain_name=${DOMAIN_NAME}
-            """,
-            shouldFailTheBuild: true,
-            shouldWaitForRundeckJob: true,
-            tailLog: true])
+            echo one of the acceptable branches
           fi
         '''
+
+        script {
+          step([$class: "RundeckNotifier",
+          includeRundeckLogs: true,
+          jobId: "${RUNDECK_JOB_ID}",
+          rundeckInstance: "${RUNDECK_INSTANCE}",
+          options: """
+          project_category=${PROJECT_CATEGORY}
+          project_path=${PROJECT_PATH}
+          deployment_branch="${BRANCH_NAME}"
+          dest_repo=${DEST_REPO}
+          domain_name=${DOMAIN_NAME}
+          """,
+          shouldFailTheBuild: true,
+          shouldWaitForRundeckJob: true,
+          tailLog: true])
+        }
 
       }
     }

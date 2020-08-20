@@ -72,6 +72,7 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
           project_path=${PROJECT_PATH}
           deployment_branch=dev
           dest_repo=${DEST_REPO}
+          domain_name=${DOMAIN_NAME}
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,
@@ -108,6 +109,7 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
           project_path=${PROJECT_PATH}
           deployment_branch=qa
           dest_repo=${DEST_REPO}
+          domain_name=${DOMAIN_NAME}
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,
@@ -143,6 +145,7 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
           project_path=${PROJECT_PATH}
           deployment_branch=master
           dest_repo=${DEST_REPO}
+          domain_name=${DOMAIN_NAME}
           """,
           shouldFailTheBuild: true,
           shouldWaitForRundeckJob: true,
@@ -163,6 +166,7 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
     HOME = '.'
     GITHUB_CRED = credentials('github_cred')
     GITHUB_USER_EMAIL = credentials('github_user_email')
+    DOMAIN_NAME = credentials('domain_name')
     PROJECT_CATEGORY = 'angular'
     PROJECT_PATH = '583'
     RUNDECK_JOB_ID = '3935e4d5-044d-4011-8713-875b826a585b'

@@ -21,13 +21,14 @@ ls'''
 rm -rf dist'''
           }
         }
+      }
+    }
 
-        stage('Install npm dependencies') {
-          steps {
-            sh 'npm install'
-          }
+    stage('Dependencies Installation') {
+      stage('Install npm dependencies') {
+        steps {
+          sh 'npm install'
         }
-
       }
     }
 

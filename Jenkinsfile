@@ -58,6 +58,7 @@ rm -rf dist'''
             git add .
             git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
             git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}
+          fi
         '''
 
         sh '''
@@ -77,6 +78,7 @@ rm -rf dist'''
             shouldFailTheBuild: true,
             shouldWaitForRundeckJob: true,
             tailLog: true])
+          fi
         '''
 
       }

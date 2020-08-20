@@ -67,7 +67,7 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
           step([$class: "RundeckNotifier",
           includeRundeckLogs: true,
           jobId: "${RUNDECK_JOB_ID}",
-          rundeckInstance: "${RUNDECK_INSTANCE}",
+          rundeckInstance: "${RUNDECK_INSTANCE_NAME}",
           options: """
           project_category=${PROJECT_CATEGORY}
           project_path=${PROJECT_PATH}
@@ -94,12 +94,12 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
     GITHUB_CRED = credentials('github_cred')
     GITHUB_USER_EMAIL = credentials('github_user_email')
     DOMAIN_NAME = credentials('domain_name')
-    PROJECT_CATEGORY = 'angular'
-    PROJECT_PATH = '583'
-    RUNDECK_JOB_ID = '3935e4d5-044d-4011-8713-875b826a585b'
-    RUNDECK_INSTANCE = 'rundeck'
+    RUNDECK_INSTANCE_NAME = credentials('rundeck_instance_name')
+    RUNDECK_JOB_ID = credentials('angular_deployment_v1_id')
     SRC_PROJECT_NAME = 'hamidev-mobile-dev-env'
     DEST_PROJECT_NAME = 'hamidev-mobile-dev-env-angular-dest'
     DEST_REPO = 'github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'
+    PROJECT_CATEGORY = 'angular'
+    PROJECT_PATH = '583'
   }
 }

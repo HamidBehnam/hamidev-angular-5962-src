@@ -42,40 +42,40 @@ rm -rf dist'''
       }
     }
 
-    stage('Push to Dest Repo - dev') {
-      when {
-        branch 'dev'
-      }
+    stage('Push to Dest Repo') {
       steps {
-        sh '''cd dist
-ls
-#make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
-git clone --single-branch --branch dev https://${DEST_REPO}
-cp -a ${SRC_PROJECT_NAME}/. ${DEST_PROJECT_NAME}/
-cd ${DEST_PROJECT_NAME}
-git config user.name "${GITHUB_CRED_USR}"
-git config user.email "${GITHUB_USER_EMAIL}"
-git add .
-git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
-git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
+        sh '''
+          if [ ${BRANCH_NAME} = "master" ] || [ ${BRANCH_NAME} = "qa" ] || [ ${BRANCH_NAME} = "dev" ]
+          then
+            cd dist
+            ls
+            #make sure the repository does have the related branch. you might need to manually create all the branches needed for the jenkins like dev, qa.
+            git clone --single-branch --branch ${BRANCH_NAME} https://${DEST_REPO}
+            cp -a ${SRC_PROJECT_NAME}/. ${DEST_PROJECT_NAME}/
+            cd ${DEST_PROJECT_NAME}
+            git config user.name "${GITHUB_CRED_USR}"
+            git config user.email "${GITHUB_USER_EMAIL}"
+            git add .
+            git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
+            git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}
 
-        script {
-          step([$class: "RundeckNotifier",
-          includeRundeckLogs: true,
-          jobId: "${RUNDECK_JOB_ID}",
-          rundeckInstance: "${RUNDECK_INSTANCE}",
-          options: """
-          project_category=${PROJECT_CATEGORY}
-          project_path=${PROJECT_PATH}
-          deployment_branch=dev
-          dest_repo=${DEST_REPO}
-          domain_name=${DOMAIN_NAME}
-          """,
-          shouldFailTheBuild: true,
-          shouldWaitForRundeckJob: true,
-          tailLog: true])
-        }
-
+            script {
+              step([$class: "RundeckNotifier",
+              includeRundeckLogs: true,
+              jobId: "${RUNDECK_JOB_ID}",
+              rundeckInstance: "${RUNDECK_INSTANCE}",
+              options: """
+              project_category=${PROJECT_CATEGORY}
+              project_path=${PROJECT_PATH}
+              deployment_branch="${BRANCH_NAME}"
+              dest_repo=${DEST_REPO}
+              domain_name=${DOMAIN_NAME}
+              """,
+              shouldFailTheBuild: true,
+              shouldWaitForRundeckJob: true,
+              tailLog: true])
+            }
+        '''
       }
     }
 

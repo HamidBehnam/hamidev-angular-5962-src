@@ -59,10 +59,10 @@ rm -rf dist'''
             git diff --quiet && git diff --staged --quiet || git commit -am "adding the build files to the dest repo"
             git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}
         '''
-        
-        if [ ${BRANCH_NAME} = "master" ] || [ ${BRANCH_NAME} = "qa" ] || [ ${BRANCH_NAME} = "dev" ]
-        then
-          script {
+
+        script {
+          if [ ${BRANCH_NAME} = "master" ] || [ ${BRANCH_NAME} = "qa" ] || [ ${BRANCH_NAME} = "dev" ]
+          then
             step([$class: "RundeckNotifier",
             includeRundeckLogs: true,
             jobId: "${RUNDECK_JOB_ID}",
@@ -77,7 +77,8 @@ rm -rf dist'''
             shouldFailTheBuild: true,
             shouldWaitForRundeckJob: true,
             tailLog: true])
-          }
+        }
+
       }
     }
 

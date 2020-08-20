@@ -60,7 +60,7 @@ rm -rf dist'''
             git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}
         '''
 
-        script {
+        sh '''
           if [ ${BRANCH_NAME} = "master" ] || [ ${BRANCH_NAME} = "qa" ] || [ ${BRANCH_NAME} = "dev" ]
           then
             step([$class: "RundeckNotifier",
@@ -70,14 +70,14 @@ rm -rf dist'''
             options: """
             project_category=${PROJECT_CATEGORY}
             project_path=${PROJECT_PATH}
-            deployment_branch=dev
+            deployment_branch=${BRANCH_NAME}
             dest_repo=${DEST_REPO}
             domain_name=${DOMAIN_NAME}
             """,
             shouldFailTheBuild: true,
             shouldWaitForRundeckJob: true,
             tailLog: true])
-        }
+        '''
 
       }
     }

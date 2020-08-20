@@ -98,7 +98,7 @@ git push https://${GITHUB_CRED_USR}:${GITHUB_CRED_PSW}@${DEST_REPO}'''
     SRC_PROJECT_NAME = 'hamidev-mobile-dev-env'
     DEST_PROJECT_NAME = 'hamidev-mobile-dev-env-angular-dest'
     DEST_REPO = 'github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'
-    PROJECT_CATEGORY = 'angular'
-    PROJECT_PATH = '583'
+    PROJECT_CATEGORY = 'angular-project'
+    PROJECT_PATH = '24342'
   }
 }

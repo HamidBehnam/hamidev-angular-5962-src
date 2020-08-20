@@ -25,10 +25,8 @@ rm -rf dist'''
     }
 
     stage('Dependencies Installation') {
-      stage('Install npm dependencies') {
-        steps {
-          sh 'npm install'
-        }
+      steps {
+        sh 'npm install'
       }
     }
 

@@ -5,5 +5,5 @@ angularCI1 {
   dest_project_name = 'hamidev-mobile-dev-env-angular-dest'
   dest_repo = 'github.com/HamidBehnam/hamidev-mobile-dev-env-angular-dest.git'
   project_category = 'angular'
-  project_path = '103'
+  project_path = '100'
 }

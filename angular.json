@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hamidev-mobile-dev-env": {
+    "hamidev-angular-5962-src": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hamidev-mobile-dev-env",
+            "outputPath": "dist/hamidev-angular-5962-src",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hamidev-mobile-dev-env:build"
+            "browserTarget": "hamidev-angular-5962-src:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hamidev-mobile-dev-env:build:production"
+              "browserTarget": "hamidev-angular-5962-src:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hamidev-mobile-dev-env:build"
+            "browserTarget": "hamidev-angular-5962-src:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "hamidev-mobile-dev-env:serve"
+            "devServerTarget": "hamidev-angular-5962-src:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "hamidev-mobile-dev-env:serve:production"
+              "devServerTarget": "hamidev-angular-5962-src:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "hamidev-mobile-dev-env"
+  "defaultProject": "hamidev-angular-5962-src"
 }
